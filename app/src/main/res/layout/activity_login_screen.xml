@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginScreen">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        android:id="@+id/logo1"
+        android:src="@drawable/ic_logo"
+        android:layout_marginHorizontal="80dp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/logo1"
+        android:layout_marginTop="20dp"
+        android:text="Login"
+        android:id="@+id/lloginText"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:layout_height="wrap_content"/>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:orientation="vertical"
+      android:layout_alignParentBottom="true"
+      android:layout_marginTop="100dp"
+      android:layout_below="@+id/lloginText"
+      android:layout_height="wrap_content">
+    <EditText
+        android:id="@+id/lusername"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp55"
+        android:background="@drawable/blue_border"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:hint="Username"
+        android:layout_marginHorizontal="20dp"
+        android:maxLength="15"
+        android:text=""
+        android:inputType="textPersonName"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:singleLine="true"
+        android:textSize="15sp"
+        />
+
+    <EditText
+        android:id="@+id/lpassword"
+        android:layout_below="@+id/lusername"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp55"
+        android:background="@drawable/blue_border"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:hint="Password"
+        android:layout_marginHorizontal="20dp"
+        android:maxLength="15"
+        android:layout_marginTop="30dp"
+        android:text=""
+        android:inputType="textPersonName"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:singleLine="true"
+        android:textSize="15sp"
+        />
+
+    <TextView
+        android:id="@+id/lloginbtn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp55"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/disable_btn"
+        android:gravity="center"
+        android:layout_below="@+id/lpassword"
+        android:layout_marginHorizontal="20dp"
+        android:text="login"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:id="@+id/lsignup"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp55"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/enablebtn"
+        android:gravity="center"
+        android:layout_below="@+id/lloginbtn"
+        android:layout_marginHorizontal="20dp"
+        android:text="Sign Up"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        />
+
+  </LinearLayout>
+
+</RelativeLayout>

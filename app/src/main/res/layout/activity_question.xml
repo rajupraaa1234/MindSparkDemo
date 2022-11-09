@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/ic_bg_common"
+    tools:context=".View.DashboardScreen.QuestionStore.Question">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/Qheader"
+        android:background="@drawable/ic_bg_header"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="50dp"
+                android:background="@drawable/done_btn"
+                android:layout_marginLeft="20dp"
+                android:gravity="center"
+                android:id="@+id/donebtn"
+                android:layout_height="50dp">
+
+              <TextView
+                  android:layout_width="wrap_content"
+                  android:text="Done"
+                  android:textColor="@color/white"
+                  android:textSize="18sp"
+                  android:textStyle="bold"
+                  android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+<!--            <ImageView-->
+<!--                android:id="@+id/drawerIcon"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:src="@drawable/ic_menu"-->
+<!--                android:layout_marginLeft="10dp"-->
+<!--                android:layout_height="wrap_content"/>-->
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:textColor="@color/black"
+                android:layout_centerInParent="true"
+                android:text="Shapes and Space"
+                android:textStyle="bold"
+                android:textSize="25dp"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="35dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="20dp"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/question_container"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="-10dp"
+            android:background="@drawable/question_number_container"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="center"
+                android:text="10"
+                android:id="@+id/questionNumber"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:scrollbars="none"
+            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Which of the threads shown below has NO length?"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:id="@+id/QuestionInst"
+                        android:textStyle="bold" />
+
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/questionImg"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/boy" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text=""
+                        android:id="@+id/QuestionbottomInst"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="80dp"
+                            android:id="@+id/optionA"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:background="@drawable/options">
+
+                            <LinearLayout
+                                android:layout_width="40dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:id="@+id/Atext"
+                                android:background="@drawable/default_option"
+                                android:layout_height="40dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:text="A"
+                                    android:textColor="@color/white"
+                                    android:textStyle="bold"
+                                    android:textSize="25sp"
+                                    android:layout_height="wrap_content"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:layout_marginLeft="10dp"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold"
+                                    android:id="@+id/optionAoptionText"
+                                    android:textColor="@color/black"
+                                    android:text="All the three threads have some length."
+                                    android:layout_height="wrap_content"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="80dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:id="@+id/optionB"
+                            android:orientation="horizontal"
+                            android:background="@drawable/options">
+
+                            <LinearLayout
+                                android:layout_width="40dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:id="@+id/Btext"
+                                android:background="@drawable/default_option"
+                                android:layout_height="40dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:text="B"
+                                    android:textColor="@color/white"
+                                    android:textStyle="bold"
+                                    android:textSize="25sp"
+                                    android:layout_height="wrap_content"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:gravity="center"
+                                android:layout_weight="1"
+                                android:layout_marginLeft="10dp"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold"
+                                    android:id="@+id/optionBoptionText"
+                                    android:textColor="@color/black"
+                                    android:text="All the three threads have some length."
+                                    android:layout_height="wrap_content"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="80dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_gravity="center"
+                            android:id="@+id/optionC"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:background="@drawable/options">
+
+                            <LinearLayout
+                                android:layout_width="40dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:id="@+id/Ctext"
+                                android:background="@drawable/default_option"
+                                android:layout_height="40dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:text="C"
+                                    android:textColor="@color/white"
+                                    android:textStyle="bold"
+                                    android:textSize="25sp"
+                                    android:layout_height="wrap_content"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginLeft="10dp"
+                                android:gravity="center"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold"
+                                    android:id="@+id/optionCoptionText"
+                                    android:textColor="@color/black"
+                                    android:text="All the three threads have some length."
+                                    android:layout_height="wrap_content"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="80dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:id="@+id/optionD"
+                            android:orientation="horizontal"
+                            android:background="@drawable/options">
+
+                            <LinearLayout
+                                android:layout_width="40dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:id="@+id/Dtext"
+                                android:background="@drawable/default_option"
+                                android:layout_height="40dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:text="D"
+                                    android:textColor="@color/white"
+                                    android:textStyle="bold"
+                                    android:textSize="25sp"
+                                    android:layout_height="wrap_content"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:layout_marginLeft="10dp"
+                                android:layout_height="match_parent">
+
+                                  <TextView
+                                      android:layout_width="match_parent"
+                                      android:textSize="15sp"
+                                      android:id="@+id/optionDoptionText"
+                                      android:textStyle="bold"
+                                      android:textColor="@color/black"
+                                      android:text="All the three threads have some length."
+                                      android:layout_height="wrap_content"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+
+
+    </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:background="@drawable/done_btn"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:paddingVertical="8dp"
+            android:layout_gravity="end"
+            android:id="@+id/submitbtn"
+            android:paddingHorizontal="25dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Submit"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

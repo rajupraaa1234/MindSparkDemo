@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginScreen">
+
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:id="@+id/logo1"
+     android:orientation="horizontal"
+     android:layout_marginHorizontal="80dp"
+     android:layout_marginTop="120dp"
+     android:layout_centerHorizontal="true"
+     android:layout_height="wrap_content">
+
+ <LinearLayout
+     android:layout_width="30dp"
+     android:id="@+id/backbtn"
+     android:background="@drawable/backbtn"
+     android:layout_gravity="center"
+     android:layout_marginRight="15dp"
+     android:gravity="center"
+     android:layout_height="30dp"
+     android:orientation="horizontal">
+
+     <ImageView
+         android:layout_width="wrap_content"
+         android:layout_gravity="center"
+         android:src="@drawable/back_marron"
+         android:layout_height="wrap_content"/>
+
+
+
+ </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:src="@drawable/ic_logo"
+        android:layout_height="wrap_content"/>
+
+ </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/logo1"
+        android:layout_marginTop="20dp"
+        android:text="Create an Account"
+        android:id="@+id/loginText"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_below="@+id/loginText"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp55"
+        android:background="@drawable/blue_border"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:hint="Username"
+        android:layout_marginHorizontal="20dp"
+        android:maxLength="15"
+        android:layout_marginTop="50dp"
+        android:text=""
+        android:inputType="textPersonName"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:singleLine="true"
+        android:textSize="15sp"
+        />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_below="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp55"
+        android:background="@drawable/blue_border"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:hint="Password"
+        android:layout_marginHorizontal="20dp"
+        android:maxLength="15"
+        android:layout_marginTop="30dp"
+        android:text=""
+        android:inputType="textPersonName"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:singleLine="true"
+        android:textSize="15sp"
+        />
+
+    <TextView
+        android:id="@+id/loginbtn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp55"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/disable_btn"
+        android:gravity="center"
+        android:layout_below="@+id/password"
+        android:layout_marginHorizontal="20dp"
+        android:text="Sign Up"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        />
+
+
+
+</RelativeLayout>
