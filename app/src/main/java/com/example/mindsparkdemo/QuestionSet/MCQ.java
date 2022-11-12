@@ -11,6 +11,43 @@ public class MCQ {
     private String mcq_2;
     private String mc1_3;
     private String mcq_4;
+    private boolean quesInst;
+    private boolean quesVoice;
+
+    public void setQuesInst(boolean quesInst) {
+        this.quesInst = quesInst;
+    }
+
+    public void setQuesVoice(boolean quesVoice) {
+        this.quesVoice = quesVoice;
+    }
+
+    public void setQuesInstUrl(String quesInstUrl) {
+        this.quesInstUrl = quesInstUrl;
+    }
+
+    public void setGetVoiceUrl(String getVoiceUrl) {
+        this.getVoiceUrl = getVoiceUrl;
+    }
+
+    private String quesInstUrl;
+    private String getVoiceUrl;
+
+    public boolean isQuesInst() {
+        return quesInst;
+    }
+
+    public boolean isQuesVoice() {
+        return quesVoice;
+    }
+
+    public String getQuesInstUrl() {
+        return quesInstUrl;
+    }
+
+    public String getGetVoiceUrl() {
+        return getVoiceUrl;
+    }
 
     public int getResult() {
         return result;
@@ -23,7 +60,8 @@ public class MCQ {
     private int result;
 
     public MCQ() {
-
+        this.quesInst = false;
+        this.quesVoice = false;
     }
 
     public int getQuestion_num() {

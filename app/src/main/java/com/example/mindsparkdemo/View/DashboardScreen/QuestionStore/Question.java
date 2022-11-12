@@ -15,6 +15,7 @@ import com.example.mindsparkdemo.App.MyRoom.ScoreTable;
 import com.example.mindsparkdemo.QuestionSet.MCQ;
 import com.example.mindsparkdemo.R;
 import com.example.mindsparkdemo.SessionReportPage;
+import com.example.mindsparkdemo.Utility.AudioSound;
 import com.example.mindsparkdemo.Utility.Session.Sessionmanager;
 import com.example.mindsparkdemo.ViewModal.RegisteredUser;
 import com.google.android.material.snackbar.Snackbar;
@@ -42,6 +43,7 @@ public class Question extends AppCompatActivity implements View.OnClickListener 
     TextView optionDoptionText;
     LinearLayout submitbtn;
     LinearLayout donebtn;
+    QuestionBank questionBank;
     ArrayList<MCQ> QuestionSet;
     private int currentQuestionNumber = 0;
     private int userResult = 0;
@@ -50,13 +52,15 @@ public class Question extends AppCompatActivity implements View.OnClickListener 
     private boolean Cclick = false;
     private boolean Dclick = false;
     private RegisteredUser registeredUser;
+    private AudioSound audioSound;
+    private LinearLayout InstVoice;
+    private LinearLayout voiceOver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
         init();
-        loadQuestion();
         setDataIntoFrame();
     }
 
@@ -65,6 +69,8 @@ public class Question extends AppCompatActivity implements View.OnClickListener 
         Atext.setBackgroundResource(R.drawable.default_option);
         Ctext.setBackgroundResource(R.drawable.default_option);
         Dtext.setBackgroundResource(R.drawable.default_option);
+        voiceOver.setVisibility(View.GONE);
+        InstVoice.setVisibility(View.GONE);
         optionA.setEnabled(true);
         optionB.setEnabled(true);
         optionC.setEnabled(true);
@@ -75,6 +81,13 @@ public class Question extends AppCompatActivity implements View.OnClickListener 
         Dclick=false;
     }
 
+    private void ennableOptionsVisibility(){
+        optionA.setVisibility(View.VISIBLE);
+        optionB.setVisibility(View.VISIBLE);
+        optionC.setVisibility(View.VISIBLE);
+        optionD.setVisibility(View.VISIBLE);
+    }
+
     private void setDataIntoFrame() {
         resetQuestionContainer();
         if(currentQuestionNumber>=0 && QuestionSet.size()>currentQuestionNumber){
@@ -82,11 +95,42 @@ public class Question extends AppCompatActivity implements View.OnClickListener 
             questionNumber.setText("" + mcq.getQuestion_num());
             QuestionInstruction.setText(mcq.getQuestion_body());
 
-            Glide.with(this)
-                    .load(mcq.getQuestion_img())
-                    .centerCrop()
-                    .placeholder(R.drawable.boy)
-                    .into(QuestionImg);
+            if(!mcq.getQuestion_img().isEmpty()){
+                QuestionImg.setVisibility(View.VISIBLE);
+                Glide.with(this)
+                        .load(mcq.getQuestion_img())
+                        .centerCrop()
+                        .placeholder(R.drawable.boy)
+                        .into(QuestionImg);
+            }else{
+                QuestionImg.setVisibility(View.GONE);
+            }
+
+            if(mcq.isQuesInst()){
+                InstVoice.setVisibility(View.VISIBLE);
+                audioSound = new AudioSound();
+                audioSound.startAudioStream(mcq.getQuesInstUrl());
+            }
+
+            if(mcq.isQuesVoice()){
+                voiceOver.setVisibility(View.VISIBLE);
+            }
+
+            InstVoice.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    audioSound = new AudioSound();
+                    audioSound.startAudioStream(mcq.getQuesInstUrl());
+                }
+            });
+
+            voiceOver.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    audioSound = new AudioSound();
+                    audioSound.startAudioStream(mcq.getGetVoiceUrl());
+                }
+            });
 
             if(mcq.getQuestion_body() != null && !mcq.getQuestion_body().isEmpty()){
                 QuestionBottomInst.setText(mcq.getQuestion_desc());
@@ -96,16 +140,19 @@ public class Question extends AppCompatActivity implements View.OnClickListener 
 
             //Glide.with(this).load(mcq.getQuestion_img()).into(QuestionImg);
             if(mcq.getTotal_mcq_options() == 2){
+                ennableOptionsVisibility();
                 optionAoptionText.setText(mcq.getMcq_1());
                 optionBoptionText.setText(mcq.getMcq_2());
                 optionC.setVisibility(View.GONE);
                 optionD.setVisibility(View.GONE);
             }else if(mcq.getTotal_mcq_options() == 3){
+                ennableOptionsVisibility();
                 optionAoptionText.setText(mcq.getMcq_1());
                 optionBoptionText.setText(mcq.getMcq_2());
                 optionCoptionText.setText(mcq.getMc1_3());
                 optionD.setVisibility(View.GONE);
             }else if(mcq.getTotal_mcq_options() == 4){
+                ennableOptionsVisibility();
                 optionAoptionText.setText(mcq.getMcq_1());
                 optionBoptionText.setText(mcq.getMcq_2());
                 optionCoptionText.setText(mcq.getMc1_3());
@@ -141,42 +188,14 @@ public class Question extends AppCompatActivity implements View.OnClickListener 
         optionD.setOnClickListener(this);
         donebtn.setOnClickListener(this);
         registeredUser = new RegisteredUser(this);
+        questionBank = new QuestionBank();
+        QuestionSet = questionBank.questionLit;
+        audioSound = new AudioSound();
+        InstVoice = findViewById(R.id.InstVoice);
+        voiceOver = findViewById(R.id.voiceOver);
+
+       // audioSound.startAudioStream("https://mindspark-lang.s3.amazonaws.com/qtypes/sounds_english/Listen%20and%20choose%20the%20correct%20option.mp3");
     }
-
-    private void loadQuestion(){
-        MCQ mcq = new MCQ();
-        mcq.setQuestion_num(1);
-        mcq.setQuestion_body("What is ON the table?");
-        mcq.setQuestion_img("https://d2tl1spkm4qpax.cloudfront.net/content_images/WNC/WNC_qcode_23204_1.png");
-        mcq.setTotal_mcq_options(2);
-        mcq.setMcq_1("book");
-        mcq.setMcq_2("cat");
-        mcq.setResult(1);
-        QuestionSet.add(mcq);
-
-        MCQ mcq2 = new MCQ();
-        mcq2.setQuestion_num(2);
-        mcq2.setQuestion_body("What is ON the chair?");
-        mcq2.setQuestion_img("https://d2tl1spkm4qpax.cloudfront.net/content_images/WNC/WNC_qcode_23230_1.png");
-        mcq2.setTotal_mcq_options(2);
-        mcq2.setMcq_1("ball");
-        mcq2.setMcq_2("books");
-        mcq2.setResult(1);
-        QuestionSet.add(mcq2);
-
-
-        MCQ mcq3 = new MCQ();
-        mcq3.setQuestion_num(3);
-        mcq3.setQuestion_body("What is UNDER the umbrella?");
-        mcq3.setQuestion_img("https://d2tl1spkm4qpax.cloudfront.net/content_images/WNC/WNC_qcode_23233_1.png");
-        mcq3.setTotal_mcq_options(2);
-        mcq3.setMcq_1("ball");
-        mcq3.setMcq_2("frog");
-        mcq3.setResult(2);
-        QuestionSet.add(mcq3);
-
-    }
-
     private void redirect(){
         boolean res = registeredUser.isScoreDataExist(Sessionmanager.get().getUserName());
         if(res){

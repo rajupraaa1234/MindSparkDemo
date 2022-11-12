@@ -7,6 +7,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -56,7 +57,9 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
         coin = findViewById(R.id.coinid);
         registeredUser = new RegisteredUser(this);
         ScoreTable scoreTable = registeredUser.getScoreData(Sessionmanager.get().getUserName());
-        coin.setText(""+scoreTable.getCorrect());
+
+        if(scoreTable != null)
+            coin.setText(""+scoreTable.getCorrect());
     }
 
     @Override
