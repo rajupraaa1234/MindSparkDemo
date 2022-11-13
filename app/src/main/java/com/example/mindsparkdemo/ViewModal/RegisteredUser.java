@@ -7,6 +7,7 @@ import androidx.room.Room;
 import com.example.mindsparkdemo.App.MyRoom.MyDataBase;
 import com.example.mindsparkdemo.App.MyRoom.RegisterUser;
 import com.example.mindsparkdemo.App.MyRoom.ScoreTable;
+import com.example.mindsparkdemo.App.MyRoom.TeacherTable;
 
 
 public class RegisteredUser {
@@ -57,5 +58,29 @@ public class RegisteredUser {
 
     public void UpdateScoreData(int corr,int incor,String username,String tm){
         myDataBase.myDataAccsessObject().UpdateScoreData(corr,incor,username,tm);
+    }
+
+    public boolean inserTeacherData(TeacherTable teacherTable){
+        String username=teacherTable.getUsername();
+        int res=myDataBase.myDataAccsessObject().isTeacherExist(username);
+        if(res==0){
+            myDataBase.myDataAccsessObject().insertTeacherEntry(teacherTable);
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public boolean TeacherPassMatch(String username, String pass){
+        int res=myDataBase.myDataAccsessObject().isTeacherPassWordMatch(username,pass);
+        if(res==0) return false;
+        return true;
+    }
+    public boolean isTeacherExist(String username){
+        int res=myDataBase.myDataAccsessObject().isTeacherExist(username);
+        if(res==0){
+            return false;
+        }
+        return true;
     }
 }

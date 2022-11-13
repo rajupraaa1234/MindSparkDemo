@@ -30,4 +30,17 @@ public interface MyDataAccessObjects {
 
     @Query("UPDATE Score_Table SET correct = :cor,incorrect = :incor,time = :tm  WHERE username = :username")
     public void UpdateScoreData(int cor,int incor,String username,String tm);
+
+
+    @Insert
+    public void insertTeacherEntry(TeacherTable teacherTable);
+
+    @Query("SELECT * FROM Teacher WHERE TeacherUsername = :username")
+    int isTeacherExist(String username);
+
+    @Query("SELECT * FROM Teacher WHERE TeacherUsername = :username AND TeacherPassword =:password")
+    int isTeacherPassWordMatch(String username,String password);
+
+
+
 }

@@ -15,8 +15,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.mindsparkdemo.App.MyRoom.ScoreTable;
+import com.example.mindsparkdemo.LandingPage;
 import com.example.mindsparkdemo.LoginScreen;
 import com.example.mindsparkdemo.R;
+import com.example.mindsparkdemo.Utility.Session.AppConstant;
 import com.example.mindsparkdemo.Utility.Session.Sessionmanager;
 import com.example.mindsparkdemo.View.DashboardScreen.QuestionStore.Question;
 import com.example.mindsparkdemo.ViewModal.RegisteredUser;
@@ -35,8 +37,10 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
     LinearLayout logoutBtn;
     LinearLayout homebtn;
     LinearLayout topics;
+    LinearLayout coinLin;
     TextView coin;
     TextView NavuserTxt;
+   LinearLayout coinLinD;
     TextView Navcoinid;
     private RegisteredUser registeredUser;
 
@@ -45,6 +49,24 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         init();
+    }
+
+    private void ForStudent(){
+        coinLin.setVisibility(View.VISIBLE);
+        coinLinD.setVisibility(View.VISIBLE);
+        topics.setVisibility(View.VISIBLE);
+        ScoreTable scoreTable = registeredUser.getScoreData(Sessionmanager.get().getUserName());
+        if(scoreTable != null) {
+            coin.setText("" + scoreTable.getCorrect());
+            Navcoinid.setText("" + scoreTable.getCorrect());
+        }
+    }
+
+    private void ForTeacher(){
+        coinLin.setVisibility(View.GONE);
+        coinLinD.setVisibility(View.GONE);
+        topics.setVisibility(View.GONE);
+
     }
 
     private void init(){
@@ -64,12 +86,17 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
         registeredUser = new RegisteredUser(this);
         NavuserTxt = findViewById(R.id.NavuserTxt);
         Navcoinid = findViewById(R.id.Navcoinid);
-        ScoreTable scoreTable = registeredUser.getScoreData(Sessionmanager.get().getUserName());
+        coinLin = findViewById(R.id.coinLin);
+        coinLinD = findViewById(R.id.coinLinD);
         NavuserTxt.setText(Sessionmanager.get().getUserName());
-        if(scoreTable != null) {
-            coin.setText("" + scoreTable.getCorrect());
-            Navcoinid.setText("" + scoreTable.getCorrect());
+
+
+        if(Sessionmanager.get().getUserType().equals(AppConstant.Student)) {
+            ForStudent();
+        }else{
+            ForTeacher();
         }
+
     }
 
     @Override
@@ -97,7 +124,7 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
 
     private void logout(){
         Sessionmanager.get().clear();
-        Intent intent = new Intent(this, LoginScreen.class);
+        Intent intent = new Intent(this, LandingPage.class);
         startActivity(intent);
         finish();
     }

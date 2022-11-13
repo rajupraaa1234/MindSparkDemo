@@ -14,8 +14,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.mindsparkdemo.App.MyRoom.RegisterUser;
+import com.example.mindsparkdemo.App.MyRoom.TeacherTable;
+import com.example.mindsparkdemo.Utility.Session.AppConstant;
 import com.example.mindsparkdemo.Utility.Session.Sessionmanager;
 import com.example.mindsparkdemo.View.DashboardScreen.Dashboard;
+import com.example.mindsparkdemo.View.DashboardScreen.TeacherDashBoardScreen;
 import com.example.mindsparkdemo.ViewModal.RegisteredUser;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -28,6 +31,7 @@ public class SignupSceen extends AppCompatActivity implements View.OnClickListen
     EditText username;
     EditText password;
     TextView signupbtn;
+    TextView loginText;
     private RegisteredUser registeredUser;
     TextWatcher textWatcher=new TextWatcher() {
         @Override
@@ -58,11 +62,18 @@ public class SignupSceen extends AppCompatActivity implements View.OnClickListen
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         signupbtn = findViewById(R.id.loginbtn);
+        loginText = findViewById(R.id.loginText);
         username.addTextChangedListener(textWatcher);
         password.addTextChangedListener(textWatcher);
         signupbtn.setOnClickListener(this);
         bakcbtn.setOnClickListener(this);
         registeredUser = new RegisteredUser(this);
+
+        if(Sessionmanager.get().getUserType().equals(AppConstant.Student)){
+            loginText.setText("Create an Student Account");
+        }else{
+            loginText.setText("Create an Teacher Account");
+        }
     }
 
     private void checkallcompleted(){
@@ -84,14 +95,14 @@ public class SignupSceen extends AppCompatActivity implements View.OnClickListen
         String pass = password.getText().toString();
         boolean res = registeredUser.UserExist(user);
         if(res){
-            Snackbar.make(getWindow().getDecorView().getRootView(),"User Already Registered", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(getWindow().getDecorView().getRootView(),"This Student Already Registered", Snackbar.LENGTH_LONG).show();
         }else{
             RegisterUser registerUser = new RegisterUser();
             registerUser.setUsername(user);
             registerUser.setPassword(pass);
             boolean response = registeredUser.inserOwnertdata(registerUser);
             if(response){
-                Snackbar.make(getWindow().getDecorView().getRootView(),"User Registration Successfully...", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(getWindow().getDecorView().getRootView(),"Student Registration Successfully...", Snackbar.LENGTH_LONG).show();
                 Sessionmanager.get().setLogin(true);
                 Sessionmanager.get().setUserName(user);
                 new Handler().postDelayed(new Runnable() {
@@ -103,7 +114,7 @@ public class SignupSceen extends AppCompatActivity implements View.OnClickListen
                     }
                 }, 1000);
             }else{
-                Snackbar.make(getWindow().getDecorView().getRootView(),"Somthing is wrong...", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(getWindow().getDecorView().getRootView(),"Something is wrong...", Snackbar.LENGTH_LONG).show();
             }
         }
     }
@@ -112,7 +123,11 @@ public class SignupSceen extends AppCompatActivity implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.loginbtn:
-                signUpApi();
+                if(Sessionmanager.get().getUserType().equals(AppConstant.Student)){
+                    signUpApi();
+                }else{
+                    teacherSignUpApi();
+                }
                 break;
             case R.id.backbtn:
                 Intent i=new Intent(SignupSceen.this, LoginScreen.class);
@@ -120,6 +135,35 @@ public class SignupSceen extends AppCompatActivity implements View.OnClickListen
                 finish();
                 break;
 
+        }
+    }
+
+    private void teacherSignUpApi() {
+        String user =  username.getText().toString();
+        String pass = password.getText().toString();
+        boolean res = registeredUser.isTeacherExist(user);
+        if(res){
+            Snackbar.make(getWindow().getDecorView().getRootView(),"This Teacher Already Registered", Snackbar.LENGTH_LONG).show();
+        }else{
+            TeacherTable teacherTable = new TeacherTable();
+            teacherTable.setUsername(user);
+            teacherTable.setTeacherPassWord(pass);
+            boolean response = registeredUser.inserTeacherData(teacherTable);
+            if(response){
+                Snackbar.make(getWindow().getDecorView().getRootView(),"Teacher Registration Successfully...", Snackbar.LENGTH_LONG).show();
+                Sessionmanager.get().setLogin(true);
+                Sessionmanager.get().setUserName(user);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent i=new Intent(SignupSceen.this, Dashboard.class);
+                        startActivity(i);
+                        finish();
+                    }
+                }, 1000);
+            }else{
+                Snackbar.make(getWindow().getDecorView().getRootView(),"Something is wrong...", Snackbar.LENGTH_LONG).show();
+            }
         }
     }
 }
