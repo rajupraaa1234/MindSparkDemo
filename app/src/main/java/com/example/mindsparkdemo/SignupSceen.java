@@ -114,6 +114,12 @@ public class SignupSceen extends AppCompatActivity implements View.OnClickListen
             case R.id.loginbtn:
                 signUpApi();
                 break;
+            case R.id.backbtn:
+                Intent i=new Intent(SignupSceen.this, LoginScreen.class);
+                startActivity(i);
+                finish();
+                break;
+
         }
     }
 }

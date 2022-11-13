@@ -18,9 +18,70 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_weight="7"
+            android:layout_weight="8"
+            android:orientation="vertical"
             android:background="@color/cardview_shadow_end_color"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent">
+
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:orientation="horizontal"
+               android:layout_marginLeft="20dp"
+               android:layout_marginTop="30dp"
+               android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="80dp"
+                    android:src="@drawable/boy"
+                    android:layout_height="80dp"/>
+
+               <TextView
+                   android:id="@+id/NavuserTxt"
+                   android:layout_toRightOf="@id/userimg"
+                   android:layout_width="wrap_content"
+                   android:layout_marginLeft="20dp"
+                   android:text="study.1430"
+                   android:layout_centerVertical="true"
+                   android:textStyle="bold"
+                   android:textSize="25sp"
+                   android:textColor="@color/black"
+                   android:fontFamily="sans-serif"
+                   android:layout_gravity="center"
+                   android:layout_height="wrap_content"/>
+
+           </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="80dp"
+                android:orientation="horizontal"
+                android:gravity="end"
+                android:layout_gravity="end"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="10dp"
+                android:paddingBottom="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_height="80dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:src="@drawable/coin"
+                    android:layout_gravity="center"
+                    android:layout_height="40dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="0"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/Navcoinid"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"

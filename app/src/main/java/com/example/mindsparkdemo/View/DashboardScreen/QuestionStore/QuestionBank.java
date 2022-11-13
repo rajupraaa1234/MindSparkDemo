@@ -110,7 +110,7 @@ public class QuestionBank {
 
         MCQ mcq8 = new MCQ();
         mcq8.setQuestion_num(8);
-        mcq8.setQuestion_body("Look at the picture and choose the first letter of the word.");
+        mcq8.setQuestion_body("");
         mcq8.setQuestion_img("");
         mcq8.setTotal_mcq_options(4);
         mcq8.setQuestion_desc("");

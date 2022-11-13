@@ -36,6 +36,8 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
     LinearLayout homebtn;
     LinearLayout topics;
     TextView coin;
+    TextView NavuserTxt;
+    TextView Navcoinid;
     private RegisteredUser registeredUser;
 
     @Override
@@ -60,10 +62,14 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
         topics.setOnClickListener(this);
         coin = findViewById(R.id.coinid);
         registeredUser = new RegisteredUser(this);
+        NavuserTxt = findViewById(R.id.NavuserTxt);
+        Navcoinid = findViewById(R.id.Navcoinid);
         ScoreTable scoreTable = registeredUser.getScoreData(Sessionmanager.get().getUserName());
-
-        if(scoreTable != null)
-            coin.setText(""+scoreTable.getCorrect());
+        NavuserTxt.setText(Sessionmanager.get().getUserName());
+        if(scoreTable != null) {
+            coin.setText("" + scoreTable.getCorrect());
+            Navcoinid.setText("" + scoreTable.getCorrect());
+        }
     }
 
     @Override
