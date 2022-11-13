@@ -9,6 +9,8 @@ import com.example.mindsparkdemo.App.MyRoom.RegisterUser;
 import com.example.mindsparkdemo.App.MyRoom.ScoreTable;
 import com.example.mindsparkdemo.App.MyRoom.TeacherTable;
 
+import java.util.List;
+
 
 public class RegisteredUser {
     MyDataBase myDataBase;
@@ -83,4 +85,8 @@ public class RegisteredUser {
         }
         return true;
     }
-}
+
+    public List<ScoreTable> getAllScoreData(){
+        return myDataBase.myDataAccsessObject().getScoreData();
+    }
+ }

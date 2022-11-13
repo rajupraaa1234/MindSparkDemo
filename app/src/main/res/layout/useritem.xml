@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@drawable/ic_btn_bg"
+    android:orientation="vertical"
+    android:layout_marginBottom="10dp"
+    android:layout_height="wrap_content">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:orientation="vertical"
+      android:padding="20dp"
+      android:layout_marginLeft="15dp"
+      android:layout_marginBottom="20dp"
+      android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="Student Id : Raju"
+        android:id="@+id/stuId"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/testAttempted"
+        android:layout_marginTop="5dp"
+        android:textSize="15sp"
+        android:text="Test Attempted : "
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textSize="15sp"
+        android:id="@+id/Iscore"
+        android:text="Score : "
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textSize="15sp"
+        android:id="@+id/correctQuestion"
+        android:text="Correct Question : "
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textSize="15sp"
+        android:id="@+id/incorrectQuestion"
+        android:text="Incorrect Question: "
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textSize="15sp"
+        android:text="Time Taken : "
+        android:id="@+id/ItimeTaken"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_marginTop="5dp"
+        android:id="@+id/totalQuestion"
+        android:textSize="15sp"
+        android:text="Total Question : "
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"/>
+  </LinearLayout>
+
+</LinearLayout>

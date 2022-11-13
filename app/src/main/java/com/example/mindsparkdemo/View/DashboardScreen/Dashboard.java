@@ -4,6 +4,8 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.mindsparkdemo.App.Adapter.ScoreDataAdapter;
 import com.example.mindsparkdemo.App.MyRoom.ScoreTable;
 import com.example.mindsparkdemo.LandingPage;
 import com.example.mindsparkdemo.LoginScreen;
@@ -25,7 +28,9 @@ import com.example.mindsparkdemo.ViewModal.RegisteredUser;
 import com.google.android.material.navigation.NavigationView;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class Dashboard extends AppCompatActivity implements View.OnClickListener {
@@ -40,9 +45,12 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
     LinearLayout coinLin;
     TextView coin;
     TextView NavuserTxt;
-   LinearLayout coinLinD;
+    LinearLayout coinLinD;
     TextView Navcoinid;
+    RecyclerView recyclerView;
     private RegisteredUser registeredUser;
+    private ScoreDataAdapter scoreDataAdapter;
+    TextView nodataavailabale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,10 +70,24 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
         }
     }
 
+    private void CollectData() {
+        List<ScoreTable> res= registeredUser.getAllScoreData();
+        scoreDataAdapter  =new ScoreDataAdapter(this, (ArrayList<ScoreTable>) res);
+        recyclerView.setAdapter(scoreDataAdapter);
+        if(res.size()==0){
+            recyclerView.setVisibility(View.GONE);
+            nodataavailabale.setVisibility(View.VISIBLE);
+        }else{
+            recyclerView.setVisibility(View.VISIBLE);
+            nodataavailabale.setVisibility(View.GONE);
+        }
+    }
+
     private void ForTeacher(){
         coinLin.setVisibility(View.GONE);
         coinLinD.setVisibility(View.GONE);
         topics.setVisibility(View.GONE);
+        CollectData();
 
     }
 
@@ -89,7 +111,10 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
         coinLin = findViewById(R.id.coinLin);
         coinLinD = findViewById(R.id.coinLinD);
         NavuserTxt.setText(Sessionmanager.get().getUserName());
-
+        recyclerView = findViewById(R.id.myrecycle);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        nodataavailabale = findViewById(R.id.nodataavailabale);
 
         if(Sessionmanager.get().getUserType().equals(AppConstant.Student)) {
             ForStudent();
