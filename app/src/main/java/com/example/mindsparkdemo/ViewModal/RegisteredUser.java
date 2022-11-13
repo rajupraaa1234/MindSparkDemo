@@ -55,7 +55,7 @@ public class RegisteredUser {
         myDataBase.myDataAccsessObject().insertScoreTable(scoreTable);
     }
 
-    public void UpdateScoreData(int corr,int incor,String username){
-        myDataBase.myDataAccsessObject().UpdateScoreData(corr,incor,username);
+    public void UpdateScoreData(int corr,int incor,String username,String tm){
+        myDataBase.myDataAccsessObject().UpdateScoreData(corr,incor,username,tm);
     }
 }

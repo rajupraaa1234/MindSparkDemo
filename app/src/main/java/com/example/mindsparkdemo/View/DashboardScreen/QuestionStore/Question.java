@@ -1,5 +1,7 @@
 package com.example.mindsparkdemo.View.DashboardScreen.QuestionStore;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -17,11 +19,15 @@ import com.example.mindsparkdemo.R;
 import com.example.mindsparkdemo.SessionReportPage;
 import com.example.mindsparkdemo.Utility.AudioSound;
 import com.example.mindsparkdemo.Utility.Session.Sessionmanager;
+import com.example.mindsparkdemo.Utility.Util;
 import com.example.mindsparkdemo.ViewModal.RegisteredUser;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class Question extends AppCompatActivity implements View.OnClickListener {
 
@@ -65,6 +71,9 @@ public class Question extends AppCompatActivity implements View.OnClickListener 
     }
 
     private void resetQuestionContainer(){
+        if(audioSound != null){
+            audioSound.stopPlaying();
+        }
         Btext.setBackgroundResource(R.drawable.default_option);
         Atext.setBackgroundResource(R.drawable.default_option);
         Ctext.setBackgroundResource(R.drawable.default_option);
@@ -198,13 +207,19 @@ public class Question extends AppCompatActivity implements View.OnClickListener 
     }
     private void redirect(){
         boolean res = registeredUser.isScoreDataExist(Sessionmanager.get().getUserName());
+        String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+        String d = Util.diff(Sessionmanager.get().getStartTime(), currentTime);
+        if(audioSound != null){
+            audioSound.stopPlaying();
+        }
         if(res){
-            registeredUser.UpdateScoreData(userResult,QuestionSet.size()-userResult,Sessionmanager.get().getUserName());
+            registeredUser.UpdateScoreData(userResult,QuestionSet.size()-userResult,Sessionmanager.get().getUserName(),d);
         }else{
             ScoreTable scoreTable = new ScoreTable();
             scoreTable.setCorrect(userResult);
             scoreTable.setIncorrect(QuestionSet.size()-userResult);
             scoreTable.setUsername(Sessionmanager.get().getUserName());
+            scoreTable.setTimeTaken(d);
             registeredUser.insertScoreTable(scoreTable);
         }
         Intent intent = new Intent(this, SessionReportPage.class);

@@ -28,6 +28,6 @@ public interface MyDataAccessObjects {
     @Query("SELECT * FROM Score_Table WHERE username = :username")
     public ScoreTable getScoreData(String username);
 
-    @Query("UPDATE Score_Table SET correct = :cor,incorrect = :incor  WHERE username = :username")
-    public void UpdateScoreData(int cor,int incor,String username);
+    @Query("UPDATE Score_Table SET correct = :cor,incorrect = :incor,time = :tm  WHERE username = :username")
+    public void UpdateScoreData(int cor,int incor,String username,String tm);
 }

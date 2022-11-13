@@ -51,6 +51,13 @@ public class Sessionmanager {
     public String getUserName(){
         return sharedPreferences.getStringData(AppConstant.Current_UserName);
     }
+
+    public void setStartTime(String str){
+        sharedPreferences.setStringData(AppConstant.TIME,str);
+    }
+    public String getStartTime(){
+        return sharedPreferences.getStringData(AppConstant.TIME);
+    }
 //
 //    public void setFirstName(String fname){
 //        sharedPreferences.setStringData(AppConstant.First_Name,fname);

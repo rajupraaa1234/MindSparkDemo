@@ -20,6 +20,17 @@ public class ScoreTable {
     @ColumnInfo(name = "incorrect")
     private int Incorrect;
 
+    public String getTimeTaken() {
+        return timeTaken;
+    }
+
+    public void setTimeTaken(String timeTaken) {
+        this.timeTaken = timeTaken;
+    }
+
+    @ColumnInfo(name = "time")
+    private String timeTaken;
+
     public int getId() {
         return id;
     }

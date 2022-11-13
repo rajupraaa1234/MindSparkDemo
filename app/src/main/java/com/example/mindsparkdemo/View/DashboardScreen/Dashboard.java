@@ -22,6 +22,10 @@ import com.example.mindsparkdemo.View.DashboardScreen.QuestionStore.Question;
 import com.example.mindsparkdemo.ViewModal.RegisteredUser;
 import com.google.android.material.navigation.NavigationView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class Dashboard extends AppCompatActivity implements View.OnClickListener {
 
     TextView userTxt;
@@ -93,6 +97,9 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
     }
 
     private void RedirectToQuestion(){
+        String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
+        Sessionmanager.get().setStartTime(currentTime);
+        Log.d("raju", currentTime);
         Intent intent = new Intent(this, Question.class);
         startActivity(intent);
         finish();
