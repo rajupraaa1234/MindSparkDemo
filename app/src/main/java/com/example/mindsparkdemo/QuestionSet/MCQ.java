@@ -1,10 +1,12 @@
 package com.example.mindsparkdemo.QuestionSet;
 
+import android.graphics.drawable.Drawable;
+
 public class MCQ {
 
     private int question_num;
     private String question_body;
-    private String question_img;
+    private int question_img;
     private String question_desc;
     private int total_mcq_options;
     private String mcq_1;
@@ -72,7 +74,7 @@ public class MCQ {
         return question_body;
     }
 
-    public String getQuestion_img() {
+    public int getQuestion_img() {
         return question_img;
     }
 
@@ -115,7 +117,7 @@ public class MCQ {
         return mcq_4;
     }
 
-    public MCQ(int question_num, String question_body, String question_img, String question_desc, int total_mcq_options, String mcq_1, String mcq_2, String mc1_3, String mcq_4) {
+    public MCQ(int question_num, String question_body, int question_img, String question_desc, int total_mcq_options, String mcq_1, String mcq_2, String mc1_3, String mcq_4) {
         this.question_num = question_num;
         this.question_body = question_body;
         this.question_img = question_img;
@@ -135,7 +137,7 @@ public class MCQ {
         this.question_body = question_body;
     }
 
-    public void setQuestion_img(String question_img) {
+    public void setQuestion_img(int question_img) {
         this.question_img = question_img;
     }
 

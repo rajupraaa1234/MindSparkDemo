@@ -1,6 +1,7 @@
 package com.example.mindsparkdemo.View.DashboardScreen.QuestionStore;
 
 import com.example.mindsparkdemo.QuestionSet.MCQ;
+import com.example.mindsparkdemo.R;
 
 import java.util.ArrayList;
 
@@ -16,7 +17,8 @@ public class QuestionBank {
         MCQ mcq = new MCQ();
         mcq.setQuestion_num(1);
         mcq.setQuestion_body("What is ON the table?");
-        mcq.setQuestion_img("https://d2tl1spkm4qpax.cloudfront.net/content_images/WNC/WNC_qcode_23204_1.png");
+        //mcq.setQuestion_img("https://d2tl1spkm4qpax.cloudfront.net/content_images/WNC/WNC_qcode_23204_1.png");
+        mcq.setQuestion_img(R.drawable.p1);
         mcq.setTotal_mcq_options(2);
         mcq.setMcq_1("book");
         mcq.setMcq_2("cat");
@@ -26,7 +28,8 @@ public class QuestionBank {
         MCQ mcq2 = new MCQ();
         mcq2.setQuestion_num(2);
         mcq2.setQuestion_body("What is ON the chair?");
-        mcq2.setQuestion_img("https://d2tl1spkm4qpax.cloudfront.net/content_images/WNC/WNC_qcode_23230_1.png");
+        mcq2.setQuestion_img(R.drawable.p2);
+        //mcq2.setQuestion_img("https://d2tl1spkm4qpax.cloudfront.net/content_images/WNC/WNC_qcode_23230_1.png");
         mcq2.setTotal_mcq_options(2);
         mcq2.setMcq_1("ball");
         mcq2.setMcq_2("books");
@@ -37,7 +40,8 @@ public class QuestionBank {
         MCQ mcq3 = new MCQ();
         mcq3.setQuestion_num(3);
         mcq3.setQuestion_body("What is UNDER the umbrella?");
-        mcq3.setQuestion_img("https://d2tl1spkm4qpax.cloudfront.net/content_images/WNC/WNC_qcode_23233_1.png");
+        mcq3.setQuestion_img(R.drawable.p3);
+        //mcq3.setQuestion_img("https://d2tl1spkm4qpax.cloudfront.net/content_images/WNC/WNC_qcode_23233_1.png");
         mcq3.setTotal_mcq_options(2);
         mcq3.setMcq_1("ball");
         mcq3.setMcq_2("frog");
@@ -48,7 +52,8 @@ public class QuestionBank {
         MCQ mcq4 = new MCQ();
         mcq4.setQuestion_num(4);
         mcq4.setQuestion_body("Look at the number chart below.");
-        mcq4.setQuestion_img("https://d2tl1spkm4qpax.cloudfront.net/content_images/WNC/WNC_qcode_4351_1.png");
+        mcq4.setQuestion_img(R.drawable.p4);
+        //mcq4.setQuestion_img("https://d2tl1spkm4qpax.cloudfront.net/content_images/WNC/WNC_qcode_4351_1.png");
         mcq4.setTotal_mcq_options(4);
         mcq4.setQuestion_desc("Which is the number missing in the number chart above?");
         mcq4.setMcq_1("20");
@@ -62,7 +67,8 @@ public class QuestionBank {
         MCQ mcq5 = new MCQ();
         mcq5.setQuestion_num(5);
         mcq5.setQuestion_body("Look at the number chart below.");
-        mcq5.setQuestion_img("https://d2tl1spkm4qpax.cloudfront.net/content_images/WNC/WNC_qcode_4357_1.png");
+        mcq5.setQuestion_img(R.drawable.p5);
+        //mcq5.setQuestion_img("https://d2tl1spkm4qpax.cloudfront.net/content_images/WNC/WNC_qcode_4357_1.png");
         mcq5.setTotal_mcq_options(4);
         mcq5.setQuestion_desc("Which are the numbers missing in the number chart above?");
         mcq5.setMcq_1("37 and 38");
@@ -75,7 +81,7 @@ public class QuestionBank {
         MCQ mcq6 = new MCQ();
         mcq6.setQuestion_num(6);
         mcq6.setQuestion_body("");
-        mcq6.setQuestion_img("");
+        mcq6.setQuestion_img(-1);
         mcq6.setTotal_mcq_options(4);
         mcq6.setQuestion_desc("");
         mcq6.setMcq_1("it");
@@ -93,7 +99,8 @@ public class QuestionBank {
         MCQ mcq7 = new MCQ();
         mcq7.setQuestion_num(7);
         mcq7.setQuestion_body("Look at the picture and choose the first letter of the word.");
-        mcq7.setQuestion_img("https://mindspark-lang.s3.amazonaws.com/qtypes/images/water_n.png");
+        mcq7.setQuestion_img(R.drawable.p7);
+        //mcq7.setQuestion_img("https://mindspark-lang.s3.amazonaws.com/qtypes/images/water_n.png");
         mcq7.setTotal_mcq_options(4);
         mcq7.setQuestion_desc("");
         mcq7.setMcq_1("w");
@@ -111,7 +118,7 @@ public class QuestionBank {
         MCQ mcq8 = new MCQ();
         mcq8.setQuestion_num(8);
         mcq8.setQuestion_body("");
-        mcq8.setQuestion_img("");
+        mcq8.setQuestion_img(-1);
         mcq8.setTotal_mcq_options(4);
         mcq8.setQuestion_desc("");
         mcq8.setMcq_1("rub");
@@ -129,7 +136,7 @@ public class QuestionBank {
         MCQ mcq9 = new MCQ();
         mcq9.setQuestion_num(9);
         mcq9.setQuestion_body("b_____");
-        mcq9.setQuestion_img("");
+        mcq9.setQuestion_img(-1);
         mcq9.setTotal_mcq_options(4);
         mcq9.setQuestion_desc("");
         mcq9.setMcq_1("ut");
@@ -146,8 +153,9 @@ public class QuestionBank {
 
         MCQ mcq10 = new MCQ();
         mcq10.setQuestion_num(10);
+        mcq10.setQuestion_img(R.drawable.p10);
         mcq10.setQuestion_body("This is a tall _____.");
-        mcq10.setQuestion_img("https://mindspark-lang.s3.amazonaws.com/qtypes/images/horse_n.png");
+        //mcq10.setQuestion_img("https://mindspark-lang.s3.amazonaws.com/qtypes/images/horse_n.png");
         mcq10.setTotal_mcq_options(4);
         mcq10.setQuestion_desc("");
         mcq10.setMcq_1("horse");

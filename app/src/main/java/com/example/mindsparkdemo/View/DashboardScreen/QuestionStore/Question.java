@@ -104,7 +104,7 @@ public class Question extends AppCompatActivity implements View.OnClickListener 
             questionNumber.setText("" + mcq.getQuestion_num());
             QuestionInstruction.setText(mcq.getQuestion_body());
 
-            if(!mcq.getQuestion_img().isEmpty()){
+            if(mcq.getQuestion_img() != -1){
                 QuestionImg.setVisibility(View.VISIBLE);
                 Glide.with(this)
                         .load(mcq.getQuestion_img())
