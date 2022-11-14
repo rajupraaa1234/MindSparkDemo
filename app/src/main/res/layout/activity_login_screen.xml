@@ -6,10 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".LoginScreen">
 
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_gravity="center"
+      android:layout_centerInParent="true"
+      android:layout_height="match_parent">
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:orientation="vertical"
+
+       android:layout_height="wrap_content">
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="70dp"
         android:id="@+id/logo1"
         android:src="@drawable/ic_logo"
         android:layout_marginHorizontal="80dp"
@@ -18,19 +30,18 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_below="@+id/logo1"
-        android:layout_marginTop="20dp"
         android:text="Login"
         android:id="@+id/lloginText"
         android:layout_centerHorizontal="true"
         android:textColor="@color/black"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:layout_height="wrap_content"/>
 
   <LinearLayout
       android:layout_width="match_parent"
       android:orientation="vertical"
       android:layout_alignParentBottom="true"
-      android:layout_marginTop="100dp"
+      android:layout_marginTop="40dp"
       android:layout_below="@+id/lloginText"
       android:layout_height="wrap_content">
     <EditText
@@ -104,5 +115,7 @@
         />
 
   </LinearLayout>
+   </RelativeLayout>
+  </ScrollView>
 
 </RelativeLayout>

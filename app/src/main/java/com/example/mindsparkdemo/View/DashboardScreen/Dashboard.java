@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -51,6 +52,7 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
     private RegisteredUser registeredUser;
     private ScoreDataAdapter scoreDataAdapter;
     TextView nodataavailabale;
+    TextView userType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +65,8 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
         coinLin.setVisibility(View.VISIBLE);
         coinLinD.setVisibility(View.VISIBLE);
         topics.setVisibility(View.VISIBLE);
+        userType.setText("User Type : Student");
+        userType.setTextColor(Color.BLUE);
         ScoreTable scoreTable = registeredUser.getScoreData(Sessionmanager.get().getUserName());
         if(scoreTable != null) {
             coin.setText("" + scoreTable.getCorrect());
@@ -88,7 +92,8 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
         coinLinD.setVisibility(View.GONE);
         topics.setVisibility(View.GONE);
         CollectData();
-
+        userType.setText("User Type : Teacher");
+        userType.setTextColor(Color.RED);
     }
 
     private void init(){
@@ -115,6 +120,7 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         nodataavailabale = findViewById(R.id.nodataavailabale);
+        userType = findViewById(R.id.userType);
 
         if(Sessionmanager.get().getUserType().equals(AppConstant.Student)) {
             ForStudent();

@@ -50,6 +50,16 @@
 
            </LinearLayout>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="User Type : Student"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:id="@+id/userType"
+                android:textSize="20sp"
+                android:layout_height="wrap_content"/>
+
             <LinearLayout
                 android:layout_width="80dp"
                 android:orientation="horizontal"
