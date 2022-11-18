@@ -5,7 +5,11 @@ import static android.content.ContentValues.TAG;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Matrix;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -61,6 +65,7 @@ public class Question extends AppCompatActivity implements View.OnClickListener 
     private AudioSound audioSound;
     private LinearLayout InstVoice;
     private LinearLayout voiceOver;
+    private ImageView buddyimg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +79,7 @@ public class Question extends AppCompatActivity implements View.OnClickListener 
         if(audioSound != null){
             audioSound.stopPlaying();
         }
+        buddyimg.setImageResource(R.drawable.buddy_sparkie_higher);
         Btext.setBackgroundResource(R.drawable.default_option);
         Atext.setBackgroundResource(R.drawable.default_option);
         Ctext.setBackgroundResource(R.drawable.default_option);
@@ -201,6 +207,7 @@ public class Question extends AppCompatActivity implements View.OnClickListener 
         QuestionSet = questionBank.questionLit;
         audioSound = new AudioSound();
         InstVoice = findViewById(R.id.InstVoice);
+        buddyimg = findViewById(R.id.buddyimg);
         voiceOver = findViewById(R.id.voiceOver);
 
        // audioSound.startAudioStream("https://mindspark-lang.s3.amazonaws.com/qtypes/sounds_english/Listen%20and%20choose%20the%20correct%20option.mp3");
@@ -273,7 +280,21 @@ public class Question extends AppCompatActivity implements View.OnClickListener 
             }
     }
 
+
+    private void onSelect(boolean status){
+        if(status){
+            MediaPlayer mpintro = MediaPlayer.create(this, R.raw.correct);
+            mpintro.start();
+            buddyimg.setImageResource(R.drawable.buddy_sparkie_higher);
+        }else{
+            MediaPlayer mpintro = MediaPlayer.create(this,  R.raw.incorrect);
+            mpintro.start();
+            buddyimg.setImageResource(R.drawable.buddy_sad);
+        }
+    }
+
     private void validateAns() {
+        Log.d("path",""+Environment.getExternalStorageDirectory().getPath());
         int ans = 0;
         if(Aclick) ans = 1;
         else if(Bclick) ans = 2;
@@ -282,8 +303,10 @@ public class Question extends AppCompatActivity implements View.OnClickListener 
         if(ans == QuestionSet.get(currentQuestionNumber).getResult()){
             userResult++;
             changedColor(true);
+            onSelect(true);
         }else{
             changedColor(false);
+            onSelect(false);
         }
     }
 
