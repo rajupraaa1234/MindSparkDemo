@@ -283,12 +283,20 @@ public class Question extends AppCompatActivity implements View.OnClickListener 
 
     private void onSelect(boolean status){
         if(status){
-            MediaPlayer mpintro = MediaPlayer.create(this, R.raw.correct);
-            mpintro.start();
+            try{
+                MediaPlayer mpintro = MediaPlayer.create(this, R.raw.correct);
+                mpintro.start();
+            } catch (Exception e) {
+                Log.d("mylog", "Error playing in SoundHandler: " + e.toString());
+            }
             buddyimg.setImageResource(R.drawable.buddy_sparkie_higher);
         }else{
-            MediaPlayer mpintro = MediaPlayer.create(this,  R.raw.incorrect);
-            mpintro.start();
+            try{
+                MediaPlayer mpintro = MediaPlayer.create(this, R.raw.incorrect);
+                mpintro.start();
+            } catch (Exception e) {
+                Log.d("mylog", "Error playing in SoundHandler: " + e.toString());
+            }
             buddyimg.setImageResource(R.drawable.buddy_sad);
         }
     }
